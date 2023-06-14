@@ -42,10 +42,10 @@ public class UserController {
     //POST new user
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
-        User savedUser = userDaoService.save(user);
+        User updatedUser = userDaoService.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedUser.getId())
+                .buildAndExpand(updatedUser.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
     }
@@ -54,5 +54,12 @@ public class UserController {
     @DeleteMapping("/users/{id}")
     public void deleteUserById(@PathVariable int id) {
         userDaoService.deleteById(id);
+    }
+
+    //POST new user
+    @PutMapping("/users/{id}")
+    public User updateUser(@PathVariable int id, @Valid @RequestBody User user) {
+        User updatedUser = userDaoService.updateUserById(id, user);
+        return user;
     }
 }

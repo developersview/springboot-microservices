@@ -44,4 +44,9 @@ public class UserDaoService {
     public void deleteById(int id){
         userList.removeIf(user -> user.getId().equals(id));
     }
+
+    public User updateUserById(int id,User updateUser){
+        User user = userList.set(id-1, updateUser);
+        return user;
+    }
 }
