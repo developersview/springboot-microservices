@@ -1,5 +1,6 @@
 package com.developersview.webservices.restfulwebservices.user;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,12 +41,18 @@ public class UserController {
 
     //POST new user
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User savedUser = userDaoService.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    //DELETE user
+    @DeleteMapping("/users/{id}")
+    public void deleteUserById(@PathVariable int id) {
+        userDaoService.deleteById(id);
     }
 }

@@ -40,4 +40,8 @@ public class UserDaoService {
         userList.add(user);
         return user;
     }
+
+    public void deleteById(int id){
+        userList.removeIf(user -> user.getId().equals(id));
+    }
 }
