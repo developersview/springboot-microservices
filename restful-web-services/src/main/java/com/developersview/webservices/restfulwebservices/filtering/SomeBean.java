@@ -1,16 +1,17 @@
 package com.developersview.webservices.restfulwebservices.filtering;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFilter;
 
 /**
  * @author pranoy.chakraborty
  * @Date 16/06/2023
  */
 //@JsonIgnoreProperties("field1")
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
     private String field1;
 
-    @JsonIgnore
+    //@JsonIgnore
     private String field2;
     private String field3;
 
