@@ -20,7 +20,7 @@ public class VersioningPersonController {
         return new PersonV2(new Name("Pranoy", "Chakraborty"));
     }
 
-    @GetMapping(path = "/person", params = "version=1")
+   /* @GetMapping(path = "/person", params = "version=1")
     public PersonV1 getFirstVersionOfPersonRequestParam() {
         return new PersonV1("Bob Charlie");
     }
@@ -48,5 +48,5 @@ public class VersioningPersonController {
     @GetMapping(path = "/person/accept", produces = "application/person-V2+json")
     public PersonV2 getSecondVersionOfPersonAcceptHeader() {
         return new PersonV2(new Name("Pranoy", "Chakraborty"));
-    }
+    }*/
 }
